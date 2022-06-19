@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2022_06_18_071302) do
   end
 
   create_table "delivery_locations", force: :cascade do |t|
-    t.integer "item_id"
+    t.integer "user_id"
     t.string "postal_code"
     t.text "address"
-    t.string "family_name"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
