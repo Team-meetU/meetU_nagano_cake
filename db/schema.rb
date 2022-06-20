@@ -116,6 +116,14 @@ ActiveRecord::Schema.define(version: 2022_06_19_095056) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_kana"
+    t.string "first_name_kana"
+    t.string "postal_code"
+    t.text "address"
+    t.string "phone_number"
+    t.boolean "is_deleted"
     t.index ["email"], name: "index_publics_on_email", unique: true
     t.index ["reset_password_token"], name: "index_publics_on_reset_password_token", unique: true
   end
