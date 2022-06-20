@@ -11,11 +11,10 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :addresses
   resources :items
   resources :customers
-  root  "homes#top"
-  get  "homes/about"
-
-  
-
+  root  "homes#top" 
+get "about" => "homes#about"
+get "oders/thanks"
+end
 
 
   namespace :admin do
@@ -29,9 +28,6 @@ devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
-end
 end
