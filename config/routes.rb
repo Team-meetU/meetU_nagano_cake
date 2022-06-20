@@ -25,6 +25,21 @@ devise_for :publics,skip: [:passwords], controllers: {
     get 'homes/top'
     get 'homes/about'
   end
+  
   devise_for :admins
+
+namespace :admin do
+    root to: 'homes#top'
+    #resource :custromers, only: [:index, :show, :edit, :update]
+  end
+
+  # 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, controllers: {
+  sessions: "admin/sessions"
+}
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
