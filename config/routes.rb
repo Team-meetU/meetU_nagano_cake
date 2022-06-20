@@ -12,7 +12,9 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :items
   resources :customers
   root  "homes#top"
-  get  "homes/about"
+  get "about" => "homes#about"
+  end
+
 
   
 
@@ -33,5 +35,4 @@ devise_for :admin, controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
-end
 end
