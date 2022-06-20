@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'addresses/index'
-  get 'addresses/edit'
+  namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
   namespace :public do
     get 'items/index'
     get 'items/show'
+  end
     
 devise_for :publics,skip: [:passwords], controllers: {
   registrations: "public/registrations",
