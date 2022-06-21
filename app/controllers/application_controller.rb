@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
       admin_root_path    # ログイン後に遷移するpathを設定
     when Public
       #root_path # ログイン後に遷移するpathを設定
+      root_path
     end
   end
 
