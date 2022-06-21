@@ -1,51 +1,33 @@
 <h1>Admin::Customers#show</h1>
 <p>Find me in app/views/admin/customers/show.html.erb</p>
-
+<%# @public = Public.find(params[:id])を使い、指定したPublicユーザーの情報を取得してひたすら表示するだけ %>
 <table>
     <thead>
-      <tr><b><%= @public.family_name+@public.first_name %>さんの会員詳細</b>
-      </tr>
+      <tr><b><%= @public.family_name+@public.first_name %>さんの会員詳細</b></tr>
     </thead>
       <tbody>
-      <tr>
-      <td>会員ID</td><td><%= @public.id %></td>
-      </tr>
+      <tr><td>会員ID</td><td><%= @public.id %></td></tr>
 
-      <tr>
-      <td>氏名</td><td><%= @public.family_name %>  <%= @public.first_name %></td>
-      </tr>
+      <tr><td>氏名</td><td><%= @public.family_name %>  <%= @public.first_name %></td></tr>
 
-      <tr>
-      <td>フリガナ</td><td><%= @public.family_name_kana %>  <%= @public.first_name_kana %></td>
-      </tr>
+      <tr><td>フリガナ</td><td><%= @public.family_name_kana %>  <%= @public.first_name_kana %></td></tr>
 
-      <tr>
-      <td>郵便番号</td><td><%= @public.postal_code %></td>
-      </tr>
+      <tr><td>郵便番号</td><td><%= @public.postal_code %></td></tr>
 
-      <tr>
-      <td>住所</td><td><%= @public.address %></td>
-      </tr>
+      <tr><td>住所</td><td><%= @public.address %></td></tr>
 
-      <tr>
-      <td>電話番号</td><td><%= @public.phone_number %></td>
-      </tr>
-
-      <tr>
-      <td>メールアドレス</td><td><%= @public.email %></td>
-      </tr>
+      <tr><td>メールアドレス</td><td><%= @public.email %></td></tr>
 
       <tr><td>
         会員ステータス
         </td><td>
-        <% if @public.is_deleted %>
-        退会
+        <% if @public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
+        退会  <%# true(退会済み)の時の表示 %>
         <% else %>
-        有効
+        有効  <%# false(初期値)の時の表示 %>
         <% end %>
-      </td>
-      </tr>
+      </td></tr>
+      <tr><td><%= link_to '編集する', edit_admin_customer_path(@public.id) %></td><td>注文履歴一覧を見る（未実装）</td></tr>
     </tbody>
   </table>
-  編集する（未実装）
-  注文履歴一覧を見る（未実装）
+
