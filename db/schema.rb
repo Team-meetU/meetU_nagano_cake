@@ -10,13 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_06_18_071302) do
-=======
-ActiveRecord::Schema.define(version: 2022_06_19_064754) do
->>>>>>> b6ba9f50b57cd217ff2e2f8b35f9b47d59f4175b
-=======
 ActiveRecord::Schema.define(version: 2022_06_19_095056) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -55,7 +48,6 @@ ActiveRecord::Schema.define(version: 2022_06_19_095056) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
->>>>>>> a172bfb67b18a8cb00e8f05dc6435c978235caa7
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,66 +59,6 @@ ActiveRecord::Schema.define(version: 2022_06_19_095056) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-<<<<<<< HEAD
-  end
-
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "user_id"
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "delivery_locations", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "postal_code"
-    t.text "address"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.text "explanation"
-    t.integer "price"
-    t.boolean "is_stock"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "order_details", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.integer "price"
-    t.integer "making_status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "postal_code"
-    t.text "delivery_address"
-    t.string "delivery_name"
-    t.string "method_of_payment"
-    t.integer "status"
-    t.integer "total_price"
-    t.integer "delivery_charge"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-end
-=======
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -200,4 +132,3 @@ end
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
->>>>>>> b6ba9f50b57cd217ff2e2f8b35f9b47d59f4175b

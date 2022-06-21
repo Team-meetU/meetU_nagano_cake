@@ -9,9 +9,9 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :addresses
   resources :items
   resources :customers
-    
-    
-  root  "homes#top" 
+
+
+  root  "homes#top"
 get "about" => "homes#about"
 get "oders/thanks"
 end
@@ -23,7 +23,7 @@ end
 
   namespace :admin do
     root to: 'homes#top'
-    resource :custromers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :create, :update, :destroy]
 
