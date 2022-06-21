@@ -13,8 +13,6 @@ devise_for :publics,skip: [:passwords], controllers: {
   get "about" => "homes#about"
   end
 
-
-
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
@@ -28,5 +26,6 @@ devise_for :admin, controllers: {
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 
 end
