@@ -5,10 +5,11 @@ class ApplicationController < ActionController::Base
       admin_root_path    # ログイン後に遷移するpathを設定
     when Public
       #root_path # ログイン後に遷移するpathを設定
+      root_path
     end
   end
 
   def after_sign_out_path_for(resource)
-    admin_root_path # ログアウト後に遷移するpathを設定(publicブランチ統合後は別のリンクに変更)
+    root_path # ログアウト後に遷移するpathを設定(publicブランチ統合後は別のリンクに変更)
   end
 end

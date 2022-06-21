@@ -12,20 +12,21 @@
 
   <body>
     <header>
-      <%# if public_signed_in? %>   <%# ここから次のelsifの列にいくまでがpublic_userのヘッダー >
+      <% if public_signed_in? %>
       <li>準備中だよ。ここにpublic_userがログインした時のヘッダーを設定するんだよ。</li>
-      <% elsif admin_signed_in? %> <%# この列から下がadmin_user時のヘッダー %>
-      <% if admin_signed_in? %> <%# publicブランチと統合出来たらこの18行目を消去して15~17行目を有効にしよう %>
+      <% elsif admin_signed_in? %>
+      <li><%= link_to "LOGO", admin_root_path %></li>
       <li>商品一覧</li>
-      <li>会員一覧</li>
+      <li><%= link_to "会員一覧", admin_customers_path %></li>
       <li>注文履歴一覧</li>
       <li>ジャンル一覧</li>
       <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-      <% else %>  <%# この列からはログアウト時のヘッダー、この項目は、public,adminで共通。 %>
+      <% else %>
+      <li><%= link_to "LOGO", root_path %></li>
       <li>About</li>
       <li>商品一覧</li>
       <li>新規登録</li>
-      <li>ログイン</li> <%# 'ここのリンクはpublic_userのログイン画面に設定しよう' %>
+      <li>ログイン</li>
       <% end %>
 
     </header>
