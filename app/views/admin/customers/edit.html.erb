@@ -1,21 +1,43 @@
 <h1>Admin::Customers#edit</h1>
 <p>Find me in app/views/admin/customers/edit.html.erb</p>
+<%# form_withを使い、情報を取得するモデル、rails routesで調べたURL、メソッドを指定して、'f.text_field'でデータを引っ張ってきてください。%>
+<%= form_with model: @public, url: admin_customer_path(@public.id), local:true, method: :patch do |f| %>
+<table>
+    <thead>
+      <tr><b><%= @public.family_name+@public.first_name %>さんの会員情報編集</b></tr>
+    </thead>
+      <tbody>
+      <tr><td>会員ID</td><td><%= @public.id %></td></tr>
 
-<div class="container takasa">
-  <div class="row">
+      <tr><td>氏名</td><td> <%= f.text_field :family_name %>   <%= f.text_field :first_name %></td></tr>
 
-    <div class="col-xs-9">
-      <h2>ジャンル編集</h2><br>
+      <tr><td>フリガナ</td><td><%= f.text_field :family_name_kana %>   <%= f.text_field :first_name_kana %></td></tr>
 
-       <%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
-        <div class="field row">
-          <lavel>ジャンル</lavel>
-          <%= f.text_field :name %>
-  
-          <label><%= f.radio_button :valid_invalid_status, "有効" %> 有効 </label>
-          <label><%= f.radio_button :valid_invalid_status, "無効" %> 無効</label>
-          <%= f.submit "変更を保存する", class: "btn btn-primary" %>
-         </div>
-      <% end %>
-  </div>
-</div>
+      <tr><td>郵便番号</td><td><%= f.text_field :postal_code %></td></tr>
+
+      <tr><td>住所</td><td><%= f.text_area :address %></td></tr>
+
+      <tr><td>電話番号</td><td><%= f.text_field :phone_number %></td></tr>
+
+      <tr><td>メールアドレス</td><td><%= f.text_field :email %></td></tr>
+
+      <tr><td>会員ステータス</td><td>
+        <%# is_deleted(退会フラグ)がfalse(初期値)なら'有効' %>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%# is_deleted(退会フラグ)がtrue(退会処理済み)なら'退会' %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会" %>
+      </td><td>
+        <%= f.submit '変更を保存' %>
+      </td></tr>
+    </tbody>
+
+
+  </table>
+  <% end %>
+
+
+
+
+
