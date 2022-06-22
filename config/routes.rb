@@ -26,6 +26,7 @@ end
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, except:[:new]
+    resources :order, only: [:index]
 
   end
 
