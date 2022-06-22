@@ -1,2 +1,51 @@
 <h1>Admin::Homes#top</h1>
 <p>Find me in app/views/admin/homes/top.html.erb</p>
+
+<table>
+    <thead>
+      <tr><b>注文履歴一覧</b>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+        <th colspan="5"></th><br>
+      </tr>
+    </thead>
+      <% @orders.each do |order| %> <%# ここでordersとそれに関連するモデルの情報を取得して一覧を表示 %>
+
+        <%# １：Ｎの関係になっているモデル情報を表示するなら、この場合だとorder_detailsに紐づけられた、
+        ただ一つのorder_idの情報も探しておかないと、どのordere_detailsの情報を表示するか決めることができません %>
+        <% order.order_details.each do |order_details| %> <%# ここでも@ordersからデータを貰います %>
+    <tbody>
+      <tr>
+      <td><%= order.created_at.to_s(:datetime_jp) %>  <%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %></td>
+
+      <td>
+        <%# Ｎ：１の関係の場合は、Ｎであるorderが決まれば自動的に表示するpublicは１つに決められます。 %>
+        <%= order.public.family_name+order.public.first_name %>
+      </td>
+
+      <td><%= order_details.quantity %></td><%# 全てのorder_detailsのorder.idのカラム情報が必ず必要です %>
+
+      <td>
+      <% if order.status == 0 %> <%# 注文idごとの受注ステータスを表示 %>
+      入金待ち
+      <% elsif order.status == 1 %>
+      入金確認
+      <% elsif order.status == 2 %>
+      制作中
+      <% elsif order.status == 3 %>
+      発送準備中
+      <% elsif order.status == 4 %>
+      発送済み
+      <% else %>
+      Errer!  <%# なんらかのトラブルで、想定していない値になってしまったことが分かるように、このように設定しました。 %>
+      <% end %>
+      </td>
+      <td><%#= order.status %>　<%# 注文idごとの受注ステータスを表示 %></td>
+
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>

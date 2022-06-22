@@ -10,21 +10,24 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :items
   resources :customers
 
-  root  "homes#top" 
+
+  root  "homes#top"
 get "about" => "homes#about"
 get "oders/thanks"
 end
 
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
+
+
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
-  end
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, except:[:new]
 
-  # 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, controllers: {
-  sessions: "admin/sessions"
-}
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

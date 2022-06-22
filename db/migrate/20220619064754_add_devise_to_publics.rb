@@ -13,7 +13,7 @@ class AddDeviseToPublics < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-      
+
       # customers
       t.string  :family_name
       t.string  :first_name
@@ -23,8 +23,8 @@ class AddDeviseToPublics < ActiveRecord::Migration[6.1]
       t.text    :address
       t.string  :phone_number
       t.boolean :is_deleted
-      
-     
+
+
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
