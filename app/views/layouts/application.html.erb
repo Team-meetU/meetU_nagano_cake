@@ -13,7 +13,7 @@
   <body>
 
     <header>
-      <% if public_signed_in? %>
+      <% if public_signed_in? %>   <%# ここから次のelsifの列にいくまでがpublic_userのヘッダー%>
       <li>準備中だよ。ここにpublic_userがログインした時のヘッダーを設定するんだよ。</li>
       <% elsif admin_signed_in? %>
       <li><%= link_to "商品一覧", admin_items_path %></li>
