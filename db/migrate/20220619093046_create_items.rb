@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string  :name
       t.text    :explanation
       t.integer :price
-      t.boolean :is_stock
+      t.boolean :is_stock, default: "ture"
 
       t.timestamps
     end

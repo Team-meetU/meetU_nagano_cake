@@ -25,7 +25,7 @@ end
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :show, :edit, :create, :update, :destroy]
+    resources :items, except:[:new]
 
   end
 

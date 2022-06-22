@@ -1,4 +1,5 @@
 class Admin::HomesController < ApplicationController
-  def topページ
+  def top
+    @orders = Order.all
   end
 end
