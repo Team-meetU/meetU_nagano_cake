@@ -1,5 +1,6 @@
 <h1>Admin::Customers#edit</h1>
 <p>Find me in app/views/admin/customers/edit.html.erb</p>
+<%= render 'admin/homes/error_form', js: @public %>
 <%# form_withを使い、情報を取得するモデル、rails routesで調べたURL、メソッドを指定して、'f.text_field'でデータを引っ張ってきてください。%>
 <%= form_with model: @public, url: admin_customer_path(@public.id), local:true, method: :patch do |f| %>
 <table>

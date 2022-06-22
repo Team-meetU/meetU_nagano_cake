@@ -54,7 +54,7 @@
   delivery_name: '齊道',
   method_of_payment: '0',
   status: '2',
-  total_price: '3000',
+  total_price: '3300',
   delivery_charge: '800',
   )
 
@@ -66,7 +66,7 @@
   delivery_name: 'マイケル',
   method_of_payment: '1',
   status: '0',
-  total_price: '3900',
+  total_price: '4290',
   delivery_charge: '800',
   )
 
@@ -75,7 +75,7 @@
   item_id: '1',
   order_id: '1',
   quantity: '1',
-  price: '3000',
+  price: '3300',
   making_status: '2',
   )
 
@@ -84,7 +84,7 @@
   item_id: '1',
   order_id: '2',
   quantity: '1',
-  price: '3000',
+  price: '3300',
   making_status: '0',
   )
 
@@ -93,7 +93,7 @@
   item_id: '2',
   order_id: '2',
   quantity: '3',
-  price: '900',
+  price: '330',
   making_status: '0',
   )
 

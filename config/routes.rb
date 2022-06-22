@@ -8,7 +8,8 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :cart_items
   resources :addresses
   resources :items
-  resources :customers
+  resources :customers, only:[:edit, :update]
+  get "costomers/my_page" => "customers#show"
 
 
   root  "homes#top"
@@ -25,8 +26,8 @@ end
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, except:[:new]
-    resources :order, only: [:index]
+    resources :items, except:[:destroy]
+    resources :order, only: [:show, :update]
 
   end
 

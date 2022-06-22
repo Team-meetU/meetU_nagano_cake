@@ -1,6 +1,6 @@
 <h1>Admin::Genres#index</h1>
 <p>Find me in app/views/admin/genres/index.html.erb</p>
-
+<%= render 'admin/homes/error_form', js: @genre %>
 <div class="container takasa ">
   <div class="row ">
 
@@ -11,9 +11,7 @@
       <lavel>ジャンル</lavel>
       <%= f.text_field :name %>
 
-      <label><%= f.radio_button :valid_invalid_status, "有効" ,checked: "checked"%> 有効 </label>
-      <label><%= f.radio_button :valid_invalid_status, "無効" %> 無効</label>
-      <%= f.submit "追加", class: "btn btn-primary" %>
+      <%= f.submit "新規登録", class: "btn btn-primary" %>
     </div>
     <% end %>
     <br>
@@ -22,7 +20,7 @@
       <thead>
         <tr class="active">
           <th>ジャンル</th>
-          <th>状態</th>
+          <th></th>
           <th colspan="1"></th>
         </tr>
       </thead>
@@ -30,12 +28,12 @@
         <% @genres.each do |genre| %>
         <tr>
           <td><%= genre.name %></td>
-          <td><%= genre.valid_invalid_status %></td>
+          <td><%#= genre.valid_invalid_status %></td>
           <td><%= link_to "編集する", edit_admin_genre_path(genre.id) ,class: "btn btn-primary" %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-    <%= paginate @genres %>
+    <%#= paginate @genres %>
   </div>
 </div>

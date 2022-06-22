@@ -1,0 +1,36 @@
+<h1>Admin::Items#index</h1>
+
+<p>Find me in app/views/admin/items/index.html.erb</p>
+<table>
+    <thead>
+      <tr><b>商品一覧</b>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ステータス</th>
+        <th colspan="5"></th><br>
+      </tr>
+    </thead>
+      <% @publics.each do |public| %><%# @publics = Public.allですべてのPublicユーザーの情報を取得して、順番に並べて表示 %>
+    <tbody>
+      <tr>
+      <td><%= public.id %></td>
+
+      <td>
+        <%# A+Bと表記して、二つの表示をくっつけてABと表示できます。%>
+        <%= link_to public.family_name+public.first_name, admin_customer_path(public.id) %>
+      </td>
+
+      <td><%= public.email %></td>
+
+      <td>
+        <% if public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
+        退会  <%# true(退会済み)の時の表示 %>
+        <% else %>
+        有効  <%# false(初期値)の時の表示 %>
+        <% end %>
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

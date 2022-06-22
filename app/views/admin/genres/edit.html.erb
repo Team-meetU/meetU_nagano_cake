@@ -1,6 +1,6 @@
 <h1>Admin::Genres#edit</h1>
 <p>Find me in app/views/admin/genres/edit.html.erb</p>
-
+<%= render 'admin/homes/error_form', js: @genre %>
 <div class="container takasa">
   <div class="row">
 
@@ -9,12 +9,10 @@
 
        <%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
         <div class="field row">
-          <lavel>ジャンル</lavel>
+          <lavel>ジャンル名</lavel>
           <%= f.text_field :name %>
 
-          <label><%= f.radio_button :valid_invalid_status, "有効" %> 有効 </label>
-          <label><%= f.radio_button :valid_invalid_status, "無効" %> 無効</label>
-          <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+          <%= f.submit "変更を保存", class: "btn btn-primary" %>
          </div>
       <% end %>
   </div>
