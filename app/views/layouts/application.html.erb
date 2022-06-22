@@ -12,10 +12,10 @@
 
   <body>
     <header>
-      <%# if public_signed_in? %>   <%# ここから次のelsifの列にいくまでがpublic_userのヘッダー >
+      <% if public_signed_in? %>   <%# ここから次のelsifの列にいくまでがpublic_userのヘッダー%>
       <li>準備中だよ。ここにpublic_userがログインした時のヘッダーを設定するんだよ。</li>
       <% elsif admin_signed_in? %> <%# この列から下がadmin_user時のヘッダー %>
-      <% if admin_signed_in? %> <%# publicブランチと統合出来たらこの18行目を消去して15~17行目を有効にしよう %>
+      <%# if admin_signed_in? %> <%# publicブランチと統合出来たらこの18行目を消去して15~17行目を有効にしよう %>
       <li>商品一覧</li>
       <li>会員一覧</li>
       <li>注文履歴一覧</li>
