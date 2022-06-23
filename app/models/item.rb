@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: {maximum:100}
   validates :explanation, presence: true, length: {maximum:999}
   validates :price, presence: true
-  validates :is_stock, presence: true
+  validate :is_stock
 
   has_one_attached :image
   has_many :cart_items, dependent: :destroy

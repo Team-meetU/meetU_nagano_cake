@@ -28,7 +28,7 @@
   <%= item.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } %>
   </div>
   <div>
-  <%= item.radio_button :is_stock, :ture ,{:checked => true} %>
+  <%= item.radio_button :is_stock, :true ,{:checked => true} %>
   <%= item.label :is_stock, "販売中" %>
   <%= item.radio_button :is_stock, :false %>
   <%= item.label :is_stock, "販売停止中" %>

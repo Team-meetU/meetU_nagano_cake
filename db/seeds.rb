@@ -103,7 +103,7 @@
   name: 'spcake1',
   explanation: '期間限定のスペシャルケーキ',
   price: '3000',
-  is_stock: 'ture'
+  is_stock: 'true'
   )
 
   Item.create!(
@@ -112,7 +112,7 @@
   name: '甘くておいしいチョコクッキー',
   explanation: '当店のイチオシです',
   price: '300',
-  is_stock: 'ture'
+  is_stock: 'true'
   )
 
 
