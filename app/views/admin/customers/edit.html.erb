@@ -2,7 +2,7 @@
 <p>Find me in app/views/admin/customers/edit.html.erb</p>
 <%= render 'admin/homes/error_form', js: @public %>
 <%# form_withを使い、情報を取得するモデル、rails routesで調べたURL、メソッドを指定して、'f.text_field'でデータを引っ張ってきてください。%>
-<%= form_with model: @public, url: admin_customer_path(@public.id), local:true, method: :patch do |f| %>
+<%= form_with model: @public, url: admin_customer_path(@public.id), method: :patch do |f| %>
 <table>
     <thead>
       <tr><b><%= @public.family_name+@public.first_name %>さんの会員情報編集</b></tr>

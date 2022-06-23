@@ -1,33 +1,36 @@
 <h1>Admin::Items#index</h1>
 
 <p>Find me in app/views/admin/items/index.html.erb</p>
+<p><%= link_to "+", new_admin_item_path %></p>
 <table>
     <thead>
-      <tr><b>商品一覧</b>
-        <th>商品ID</th>
+      <tr><b>商品一覧</b></tr>
+      <tr><th>商品ID</th>
         <th>商品名</th>
         <th>税抜価格</th>
+        <th>ジャンル</th>
         <th>ステータス</th>
-        <th colspan="5"></th><br>
+        <th colspan="6"></th><br>
       </tr>
     </thead>
-      <% @publics.each do |public| %><%# @publics = Public.allですべてのPublicユーザーの情報を取得して、順番に並べて表示 %>
+      <% @items.each do |item| %>
     <tbody>
       <tr>
-      <td><%= public.id %></td>
+      <td><%= item.id %></td>
 
       <td>
-        <%# A+Bと表記して、二つの表示をくっつけてABと表示できます。%>
-        <%= link_to public.family_name+public.first_name, admin_customer_path(public.id) %>
+        <%= link_to item.name, admin_item_path(item.id) %>
       </td>
 
-      <td><%= public.email %></td>
+      <td><%= item.price.to_s(:delimited) %></td><%#[.to_s(:delimited)]３桁ごとにカンマ表記] %>
+
+      <td><%= item.genre.name %></td>
 
       <td>
-        <% if public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
-        退会  <%# true(退会済み)の時の表示 %>
+        <% if item.is_stock %><%# is_stockの情報を取得して在庫があるかチェック %>
+        販売中  <%# true(初期値)の時の表示 %>
         <% else %>
-        有効  <%# false(初期値)の時の表示 %>
+        販売停止中  <%# false(売り切れ)の時の表示 %>
         <% end %>
       </td>
       </tr>
