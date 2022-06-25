@@ -5,15 +5,18 @@ devise_for :publics,skip: [:passwords], controllers: {
 }
 
   scope module: :public do
-  resources :cart_items
-  resources :addresses
-  resources :items
-  resources :customers
-
-
-  root  "homes#top"
-get "about" => "homes#about"
-get "oders/thanks"
+  root to: "homes#top"
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  resources :addresses, except: [:new]
+  resources :items, only: [:show, :index]
+  resources :customers, only: [:edit, :update]
+  resources :orders, only: [:new, :confirm, :create, :show, :index] do
+    collection do
+      get :thanks
+    end
+  end
+  get "customers/my_page" => "customers#show"
+  get "about" => "homes#about"
 end
 
   devise_for :admin, controllers: {
