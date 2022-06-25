@@ -1,9 +1,9 @@
-<h1>Admin::Customers#index</h1>
-
-<p>Find me in app/views/admin/customers/index.html.erb</p>
-  <table>
+<div class="col-md-8 offset-md-1">
+  <b>会員一覧</b>
+  <p id="notice"></p>
+  <table class="table thead-class">
     <thead>
-      <tr><b>会員一覧</b>
+      <tr class="table-secondary">
         <th>会員ID</th>
         <th>氏名</th>
         <th>メールアドレス</th>
@@ -25,9 +25,9 @@
 
       <td>
         <% if public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
-        退会  <%# true(退会済み)の時の表示 %>
+          <b class="text-secondary">退会</b>  <%# true(退会済み)の時の表示 %>
         <% else %>
-        有効  <%# false(初期値)の時の表示 %>
+          <b class="text-success">有効</b>  <%# false(初期値)の時の表示 %>
         <% end %>
       </td>
       </tr>
