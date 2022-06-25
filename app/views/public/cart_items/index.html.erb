@@ -1,4 +1,4 @@
-<a>ショーッピングカート</a>
+<a>ショッピングカート</a>
 <table>
     <thead>
       <tr>
@@ -10,14 +10,14 @@
       </tr>
     </thead>
     <tbody>
-        <% @cart_items.each do| cart_item | %>
+        <% @cart_items.each do|cart_item| %>
             <tr>
-                <td><%=image_tag cart_item.item.image,size:"100x100" %></td>
+                <td><%=image_tag cart_item.item.get_item_image(100, 100) %></td>
                 <td><%= cart_item.item.name %>  </td>
                 <td><%= cart_item.item.price %>          </td>
                 <td>                </td>
                 <td><%= cart_item.subtotal %>                </td>
-                <td><%= link_to  cart_item_path(cart_item),method: :delete %> </td>
+                <td><%= link_to  "削除する", cart_item_path(cart_item),method: :delete %> </td>
             </tr>
         <% end %>
     </tboby>
