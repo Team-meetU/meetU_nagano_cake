@@ -12,6 +12,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
   	if @item.save
   	   redirect_to admin_item_path(@item)
+  	   flash[:notice] = '新しい商品を登録しました。'
   	else
   	   render "new"
   	end
@@ -31,11 +32,13 @@ class Admin::ItemsController < ApplicationController
   	  redirect_to admin_item_path(@item.id)
   	else
   		render "edit"
+  		flash[:notice] = '商品情報を編集しました。'
   	end
   end
 end
   private
 
   def item_params
-  	params.require(:item).permit(:genre_id,:item_name,:unit_price_without_tax,:sale_status,:explanation,:image)
+  	params.require(:item).permit(:genre_id,:name,:explanation,:price,:is_stock,:image)
   end
+

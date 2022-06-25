@@ -5,6 +5,7 @@ devise_for :publics,skip: [:passwords], controllers: {
 }
 
   scope module: :public do
+
   root to: "homes#top"
   resources :cart_items, only: [:index, :update, :destroy, :create]
   resources :addresses, except: [:new]
@@ -17,6 +18,7 @@ devise_for :publics,skip: [:passwords], controllers: {
   end
   get "customers/my_page" => "customers#show"
   get "about" => "homes#about"
+
 end
 
   devise_for :admin, controllers: {
@@ -28,8 +30,8 @@ end
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, except:[:new]
-    resources :order, only: [:index]
+    resources :items, except:[:destroy]
+    resources :order, only: [:show, :update]
 
   end
 
