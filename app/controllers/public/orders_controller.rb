@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @addresses = Address.all
   end
   
   def confirm
