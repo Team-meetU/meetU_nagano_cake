@@ -1,7 +1,6 @@
 <a>会員情報編集</a>
 
-<%= form_with model: @public do |customer| %>
-
+<%= form_with model: @customer,url: customer_path(@customer.id) do |customer| %>
   <table>
     <tr>
       <td>
