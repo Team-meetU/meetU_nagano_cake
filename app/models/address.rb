@@ -4,4 +4,9 @@ class Address < ApplicationRecord
   #vaildates :name, presence: true, length: {maximum:50}
 
   belongs_to :public, optional: true
+  
+  def address_display
+    '〒' + postal_code + ' ' + address + ' ' + name
+　end
+end
 end

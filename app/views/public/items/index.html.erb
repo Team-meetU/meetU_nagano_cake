@@ -12,7 +12,8 @@
       <% end %>
     <% end %>
     <%= item.name %>
-    <%= item.price %>
+    <p>商品価格（税込）<p>
+      <%= item.add_tax_price.to_s(:delimited) %> 円
   <% end %>
 </div>
   

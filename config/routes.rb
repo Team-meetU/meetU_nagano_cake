@@ -5,16 +5,23 @@ devise_for :publics,skip: [:passwords], controllers: {
 }
 
   scope module: :public do
+  root  "homes#top"
+  get "about" => "homes#about"
   resources :cart_items
   resources :addresses
   resources :items
   resources :customers
+    resources :orders, only: [:new, :confirm, :create, :show, :index] do
+      collection do
+        get :thanks
+      end
+    end
+  end
 
 
-  root  "homes#top"
-get "about" => "homes#about"
-get "oders/thanks"
-end
+  
+
+
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -31,5 +38,4 @@ end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 end
