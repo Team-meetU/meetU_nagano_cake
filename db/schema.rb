@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_090847) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "public_id"
+    t.integer "user_id"
     t.string "postal_code"
     t.text "address"
     t.string "name"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_090847) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "public_id"
+    t.integer "user_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_090847) do
     t.string "name"
     t.text "explanation"
     t.integer "price"
-    t.boolean "is_stock", default: true
+    t.boolean "is_stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,18 +90,18 @@ ActiveRecord::Schema.define(version: 2022_06_22_090847) do
     t.integer "order_id"
     t.integer "quantity"
     t.integer "price"
-    t.integer "making_status", default: 0
+    t.integer "making_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "public_id"
+    t.integer "user_id"
     t.string "postal_code"
     t.text "delivery_address"
     t.string "delivery_name"
-    t.integer "method_of_payment", default: 0
-    t.integer "status", default: 0
+    t.integer "method_of_payment"
+    t.integer "status"
     t.integer "total_price"
     t.integer "delivery_charge"
     t.datetime "created_at", precision: 6, null: false

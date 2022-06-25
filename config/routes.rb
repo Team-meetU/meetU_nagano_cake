@@ -5,16 +5,20 @@ devise_for :publics,skip: [:passwords], controllers: {
 }
 
   scope module: :public do
-  resources :cart_items
-  resources :addresses
-  resources :items
-  resources :customers, only:[:edit, :update]
-  get "costomers/my_page" => "customers#show"
 
+  root to: "homes#top"
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  resources :addresses, except: [:new]
+  resources :items, only: [:show, :index]
+  resources :customers, only: [:edit, :update]
+  resources :orders, only: [:new, :confirm, :create, :show, :index] do
+    collection do
+      get :thanks
+    end
+  end
+  get "customers/my_page" => "customers#show"
+  get "about" => "homes#about"
 
-  root  "homes#top"
-get "about" => "homes#about"
-get "oders/thanks"
 end
 
   devise_for :admin, controllers: {
@@ -32,5 +36,4 @@ end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 end
