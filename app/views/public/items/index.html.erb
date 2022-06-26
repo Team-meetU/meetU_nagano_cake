@@ -2,9 +2,9 @@
 
 <div>
   <% @items.each do |item| %>
-    <% if item.image.attached? %>
+    <% if item.item_image.attached? %>
       <%= link_to item_path(item.id) do %>
-        <%= image_tag item.get_image, size: "200x200" %>
+        <%= image_tag item.get_item_image(200,200) %>
       <% end %>
     <% else %>
       <%= link_to item_path(item.id) do %>
@@ -16,5 +16,5 @@
       <%= item.add_tax_price.to_s(:delimited) %> 円
   <% end %>
 </div>
-  
+
 
