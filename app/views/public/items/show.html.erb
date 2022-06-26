@@ -1,19 +1,24 @@
-<div>
+  <div class="row">
+  <div class="col-md-4 offset-md-1">
   <% if @item.item_image.attached? %>
   <%= image_tag @item.get_item_image(200,200) %>
   <% else %>
-    <%= image_tag 'no_image', size: "300x300" %>
+    <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-  <%= @item.name %>
+  </div>
+  <div class="col-md-4 offset-md-1">
+  <h3><b><%= @item.name %></b></h3>
+  <p id="notice"></p>
   <%= @item.explanation %>
-  <%= @item.price %>
-  <p>商品価格（税込）<p>
-  <%= @item.add_tax_price.to_s(:delimited) %> 円
+  <p id="notice"></p>
+  <b>￥<%= @item.add_tax_price.to_s(:delimited) %></b>(税込)
+  <p id="notice"></p>
   <%= form_with model: @cart_item,url: cart_items_path do |f| %>
   <%= f.hidden_field :item_id, :value =>@item.id %>
   <%= f.label :個数 %>
-  <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
-  <%= f.submit "カートに入れる" %>
+  <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>&emsp;
+  <%= f.submit "カートに入れる", class:"btn btn-success" %>
   <% end %>
 </div>
-
+</div>
+</div>
