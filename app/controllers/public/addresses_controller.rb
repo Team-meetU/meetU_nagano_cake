@@ -6,7 +6,7 @@ class Public::AddressesController < ApplicationController
 
   def create
     address = Address.new(address_params)
-    address.public_id = current_public_id
+    address.public_id = current_public
     address.save
     redirect_to '/addresses'
   end
@@ -14,8 +14,8 @@ class Public::AddressesController < ApplicationController
   def edit
     @address = Address.find(params[:id])
   end
-  
-  
+
+
   private
   # ストロングパラメータ
   def address_params

@@ -16,19 +16,31 @@
         <td><%= cart_item.quantity %></td>
         <td><%= cart_item.subtotal.to_s(:delimited) %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
-  
+
   <table>
     <tr><th>送料</th><td>800</td></tr>
     <tr><th>商品合計</th><td><%= @total.to_s(:delimited) %></td></tr>
     <tr><th>請求金額</th><td><%= @order.total_price.to_s(:delimited) %></td></tr>
-    <% end %>
-  </table>
+
+  </table>#
+  <%= form_with model: @order,url: orders_path,method: :post do |f| %>
   <p>支払い方法</p>
   <%= @order.method_of_payment %>
+  <%#= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
+  <%#= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
   <p>お届け先</p>
   <%= "〒" + @order.postal_code + " " + @order.delivery_address + " " + @order.delivery_name %> 様
-  <%= form_with model: @order,url: thanks_orders_path,method: :post do |f| %>
-  <%= f.submit "注文を確定する" %>
+
+
+
+  <%= f.hidden_field :method_of_payment %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.hidden_field :delivery_address %>
+  <%= f.hidden_field :delivery_name %>
+  <%#= f.hidden_field :total_price, value: billing_amount(@order) %>
+
+  <%= f.submit "注文を確定する", class:"btn btn-success" %>
   <% end %>

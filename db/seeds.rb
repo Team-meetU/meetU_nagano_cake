@@ -52,8 +52,6 @@
   postal_code: '6527485',
   delivery_address: '兵庫県神戸市',
   delivery_name: '齊道',
-  method_of_payment: '0',
-  status: '2',
   total_price: '3300',
   delivery_charge: '800',
   )
@@ -64,8 +62,6 @@
   postal_code: '8888888',
   delivery_address: 'マイケル星ダブルマインランド',
   delivery_name: 'マイケル',
-  method_of_payment: '1',
-  status: '0',
   total_price: '4290',
   delivery_charge: '800',
   )
