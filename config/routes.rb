@@ -7,7 +7,11 @@ devise_for :publics,skip: [:passwords], controllers: {
   scope module: :public do
 
   root to: "homes#top"
-  resources :cart_items, only: [:index, :update, :destroy, :create]
+  resources :cart_items, only: [:index, :update, :destroy, :create]do
+  collection do
+      delete :destroy_all
+    end
+  end
   resources :addresses, except: [:new]
   resources :items, only: [:show, :index]
   resources :customers, only: [:edit, :update]
