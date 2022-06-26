@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row">
+<p id="notice"></p>
+<div class="row">
     <div class="jumbotron col-md-8 offset-md-2">
     <%#= image_tag 'no_image', size: '480x300' %>
 <p>ようこそ、ながのCAKEへ！</p>
@@ -23,10 +23,10 @@
         <%= image_tag 'no_image', size: "200x200" %>
       <% end %>
     <% end %>
+    <br>
 
-
-    <%= item.name %>
-    <p>商品価格（税込）<p>
+    <%= item.name %><br>
+    <p>商品価格（税込）<p><br>
       <%= item.add_tax_price.to_s(:delimited) %> 円
       </ul>
     </div>
