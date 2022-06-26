@@ -48,7 +48,7 @@
 
   Order.create!(
   id: '1',
-  user_id: '1',
+  public_id: '1',
   postal_code: '6527485',
   delivery_address: '兵庫県神戸市',
   delivery_name: '齊道',
@@ -60,7 +60,7 @@
 
   Order.create!(
   id: '2',
-  user_id: '2',
+  public_id: '2',
   postal_code: '8888888',
   delivery_address: 'マイケル星ダブルマインランド',
   delivery_name: 'マイケル',

@@ -1,11 +1,12 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
 <%# @public = Public.find(params[:id])を使い、指定したPublicユーザーの情報を取得してひたすら表示するだけ %>
-<table>
+<div class="col-md-8 offset-md-1">
+  <div class="row">
+<table class="table">
     <thead>
       <tr><b><%= @public.family_name+@public.first_name %>さんの会員詳細</b></tr>
     </thead>
-      <tbody>
+
+    <tbody>
       <tr><td>会員ID</td><td><%= @public.id %></td></tr>
 
       <tr><td>氏名</td><td><%= @public.family_name %>  <%= @public.first_name %></td></tr>
@@ -22,12 +23,19 @@
         会員ステータス
         </td><td>
         <% if @public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
-        退会  <%# true(退会済み)の時の表示 %>
+        <b class="text-secondary">退会</b>  <%# true(退会済み)の時の表示 %>
         <% else %>
-        有効  <%# false(初期値)の時の表示 %>
+        <b class="text-success">有効</b>  <%# false(初期値)の時の表示 %>
         <% end %>
       </td></tr>
-      <tr><td><%= link_to '編集する', edit_admin_customer_path(@public.id) %></td>
-      <td>注文履歴一覧を見る（未実装）</td></tr>
     </tbody>
   </table>
+    <div class="col-md-4" >
+ 　  <%= link_to '編集する', edit_admin_customer_path(@public.id), class:"btn btn-success" %>
+    </div>
+
+    <div class="col-md-6">
+    <%= link_to '注文履歴一覧を見る(未実装)', admin_root_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>

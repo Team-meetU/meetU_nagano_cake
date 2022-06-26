@@ -1,8 +1,10 @@
 <% if js.errors.any? %>
+<div class="error-alert">
   <%= js.errors.count %> 件のエラーが発生しました。
   <ul>
     <% js.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
+  </div>
 <% end %>
