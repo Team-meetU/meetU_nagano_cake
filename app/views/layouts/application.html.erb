@@ -13,12 +13,13 @@
   <body>
 
     <header>
+      <h2>LOGO</h2>
       <% if public_signed_in? %>   <%# ここから次のelsifの列にいくまでがpublic_userのヘッダー%>
-     <h2>LOGO</h2>
-         <li><%= link_to "マイページ", customers_my_page_path %></li>
+      <li><%= link_to "マイページ", customers_my_page_path %></li>
       <li><%= link_to "商品一覧", items_path %></li>
       <li><%= link_to "カート", cart_items_path %></li>
       <li><%= link_to "ログアウト",  destroy_public_session_path, method: :delete %></li>
+      <li>ようこそ、<%= current_public.family_name %>さん！</li>
       <% elsif admin_signed_in? %>
       <li><%= link_to "商品一覧", admin_items_path %></li>
       <li><%= link_to "会員一覧", admin_customers_path %></li>

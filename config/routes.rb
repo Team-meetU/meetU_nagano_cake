@@ -14,6 +14,7 @@ devise_for :publics,skip: [:passwords], controllers: {
   end
   resources :addresses, except: [:new]
   resources :items, only: [:show, :index]
+
   resources :customers, only: [:edit, :update]do
     collection do
       get :unsubscribe
@@ -23,7 +24,8 @@ devise_for :publics,skip: [:passwords], controllers: {
 
   resources :orders, only: [:new, :confirm, :create, :show, :index] do
     collection do
-      get :thanks
+      post :confirm
+      post :thanks
     end
   end
   get "customers/my_page" => "customers#show"
