@@ -18,7 +18,7 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :orders, only: [:new, :create, :show, :index] do
     collection do
       post :confirm
-      get :thanks
+      post :thanks
     end
   end
   get "customers/my_page" => "customers#show"

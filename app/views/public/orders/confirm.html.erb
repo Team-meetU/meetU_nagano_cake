@@ -9,11 +9,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @items.each do|cart_item| %>
+      <% @cart_items.each do|cart_item| %>
       <tr>
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-        <td><%= cart_item.item.quantity %></td>
+        <td><%= cart_item.quantity %></td>
         <td><%= cart_item.subtotal.to_s(:delimited) %></td>
       </tr>
     </tbody>
@@ -22,6 +22,13 @@
   <table>
     <tr><th>送料</th><td>800</td></tr>
     <tr><th>商品合計</th><td><%= @total.to_s(:delimited) %></td></tr>
-    <tr><th>請求金額<td></td><%= @total.to_s(:delimited)+ 800 %></th></tr>
+    <tr><th>請求金額</th><td><%= @order.total_price.to_s(:delimited) %></td></tr>
     <% end %>
   </table>
+  <p>支払い方法</p>
+  <%= @order.method_of_payment %>
+  <p>お届け先</p>
+  <%= "〒" + @order.postal_code + " " + @order.delivery_address + " " + @order.delivery_name %> 様
+  <%= form_with model: @order,url: thanks_orders_path,method: :post do |f| %>
+  <%= f.submit "注文を確定する" %>
+  <% end %>
