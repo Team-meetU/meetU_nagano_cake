@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_090847) do
     t.string "name"
     t.text "explanation"
     t.integer "price"
-    t.boolean "is_stock"
+    t.boolean "is_stock", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

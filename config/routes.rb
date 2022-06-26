@@ -15,8 +15,9 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :addresses, except: [:new]
   resources :items, only: [:show, :index]
   resources :customers, only: [:edit, :update]
-  resources :orders, only: [:new, :confirm, :create, :show, :index] do
+  resources :orders, only: [:new, :create, :show, :index] do
     collection do
+      post :confirm
       get :thanks
     end
   end
