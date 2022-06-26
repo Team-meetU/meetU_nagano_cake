@@ -5,27 +5,27 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>注文履歴詳細</h2>
-      
+
       <table>
        <tr>
         <th class= "order-show">購入者</th>
-        <td><%= @order.member.last_name %> <%= @order.member.first_name %></td>
+        <td><%= @order.public.family_name %> <%= @order.public.first_name %></td>
 
       </tr>
       <tr>
         <th class= "order-show">配送先</th>
-        <td>〒<%= @order.postal_code %> <%= @order.address %><br><%= @order.name %></td>
+        <td>〒<%= @order.postal_code %> <%= @order.delivery_address %><br><%= @order.delivery_name %></td>
       </tr>
       <tr>
         <th class= "order-show">支払い方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.method_of_payment %></td>
       </tr>
       <tr>
 
         <th>注文ステータス</th>
         <td>
           <%= form_for @order, url: admin_order_path do |f| %>
-          　<%= f.select :order_status,["入金待ち","入金確認","製作中","発送準備中","発送済"] ,style: "margin-top:10px;#" %>
+          　<%= f.select :status,["入金待ち","入金確認","製作中","発送準備中","発送済"] ,style: "margin-top:10px;#" %>
           <%= f.submit "更新" ,class: "btn btn-primary btn-sm" %></td>
           <% end %>
         </tr>
@@ -49,7 +49,7 @@
           <td><%= order_item.items_tax_included_price %></td>
           <td><%= order_item.number_of_items %></td>
           <td><%= ((order_item.items_tax_included_price)*(order_item.number_of_items)) %> </td>
-          
+
           <%= form_for order_item,url: admin_order_item_path(order_item) do |f| %>
           <td><%= f.select :making_status,["着手不可","製作待ち","製作中","製作完了"] %></td>
           <td><%= f.submit "更新" ,class:"btn btn-primary btn-xs" %></td>
@@ -61,9 +61,9 @@
 
 
     <div class="total">
-     <h4>商品合計     <%= @order.total_fee %>円</h4>
-     <h4>送料　　　    <%= @order.postage %>円</h4>
-     <h4>請求金額合計　<%= (@order.total_fee+@order.postage) %>円</h4>
+     <h4>商品合計     <%= @order.total_price %>円</h4>
+     <h4>送料　　　    <%= delivery_charge = @order.delivery_charge.to_i %>円</h4>
+     <h4>請求金額合計　<%= @order.total_price + delivery_charge %>円</h4>
     </div>
   </div>
 

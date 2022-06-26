@@ -25,7 +25,7 @@ devise_for :publics,skip: [:passwords], controllers: {
   resources :orders, only: [:new, :confirm, :create, :show, :index] do
     collection do
       post :confirm
-      post :thanks
+      get :thanks
     end
   end
   get "customers/my_page" => "customers#show"
@@ -43,7 +43,7 @@ end
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, except:[:destroy]
-    resources :order, only: [:show, :update]
+    resources :orders, only: [:show, :update]
 
   end
 
