@@ -9,4 +9,8 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
   
+  def confirm
+    @items = current_public.cart_items
+  end
+  
 end
