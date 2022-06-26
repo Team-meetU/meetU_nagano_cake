@@ -1,11 +1,9 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
 <div class="col-md-8 offset-md-1">
 <h2 class="text-right"><%= link_to "+", new_admin_item_path %></h2>
 <b>商品一覧</b>
 <p id="notice"></p>
-<%#table class="table thead-class"%>
-  <table class="table table-bordered">
+<table class="table thead-class">
+  <%#table class="table table-bordered"%>
     <tbody>
       <tr class="table-secondary"><th>商品ID</th>
         <th>商品名</th>
@@ -39,3 +37,4 @@
       <% end %>
     </tbody>
   </table>
+  </div>
