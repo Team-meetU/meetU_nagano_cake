@@ -11,13 +11,13 @@ class Item < ApplicationRecord
 
   belongs_to :genre, optional: true
 
- def get_item_image(width, height)
-  unless item_image.attached?
-    file_path = Rails.root.join('app/assets/images/no_image.png')
-    item_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+  def get_item_image(width, height)
+    unless item_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.png')
+      item_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    item_image.variant(resize_to_limit: [width, height]).processed
   end
-  item_image.variant(resize_to_limit: [width, height]).processed
-end
   #消費税を加えた商品価格
 
   def add_tax_price

@@ -1,5 +1,3 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
 <div class="container">
   <div class="row">
 <%= render 'admin/homes/error_form', js: @item %>
@@ -10,7 +8,7 @@
 
 <form>
   <label for="inputImage">商品画像</label>
-  <%= item.file_field :image, placeholder: "選択されていません", accept: "image/*" %>
+  <%= item.file_field :item_image, placeholder: "選択されていません", accept: "image/*" %>
 
   <div class="form-group">
   <p id="notice"></p>

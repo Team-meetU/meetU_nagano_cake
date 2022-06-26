@@ -10,10 +10,17 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
   def update
+<<<<<<< HEAD
      @cart_item = CartItem.find(params[:id])
      @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
      flash[:notice] = "You have updated user successfully."
      redirect_to cart_items_path
+=======
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
+    flash[:notice] = "You have updated user successfully."
+    redirect_to cart_items_path
+>>>>>>> ab129e12aa140c5a149fcdac1a0fb428102bf141
   end
   def destroy
      @cart_item = CartItem.find(params[:id])
@@ -27,8 +34,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-  def cart_item_params
-  params.require(:cart_item).permit(:item_id, :quantity)
-  end
 
+  def cart_item_params
+    params.require(:cart_item).permit(:item_id, :quantity)
+  end
 end
