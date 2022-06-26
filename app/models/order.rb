@@ -10,5 +10,5 @@ class Order < ApplicationRecord
   belongs_to :public, optional: true
   has_many :order_details, dependent: :destroy
   enum method_of_payment: { credit_card: 0, transfer: 1 }
-  enum delivery_address: { my_address: 1, registered_addresses: 2, new_address: 3 }
+  
 end
