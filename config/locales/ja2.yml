@@ -1,7 +1,0 @@
-ja:
-  enums:
-    order:
-      delivery_address:
-        my_address: "ご自身の住所"
-        registered_addresses: "登録済住所から選択"
-        new_address: "新しいお届け先"

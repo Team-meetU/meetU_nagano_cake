@@ -8,10 +8,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-     @order = current_user.orders.new(order_params)
+     @order = current_public.orders.new(order_params)
     @order.save
-    current_public.addresses.create!(
-        post_code: params[:order][:post_code],
+    p @order
+    current_public.addresses.create(
+        postal_code: params[:order][:postal_code],
         address: params[:order][:address],
         name: params[:order][:name]
         )
@@ -28,7 +29,7 @@ class Public::OrdersController < ApplicationController
     #５ 最後にカート商品を全て削除する
     @cart_items.destroy_all
     #６　購入完了画面へ遷移
-    redirect_to public_thanks_path
+    redirect_to thanks_orders_path
   end
 
   def index
@@ -59,7 +60,7 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:postal_code,:delivery_address,:delivery_name,:method_of_payment,:status,:total_price,:delivery_charge)
+    params.require(:order).permit(:postal_code, :delivery_address, :delivery_name, :method_of_payment, :status, :total_price, :delivery_charge, :user_address)
   end
 end
 

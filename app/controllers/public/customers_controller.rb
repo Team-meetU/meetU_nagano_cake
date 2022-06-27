@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_public!
   def show
     @customer = current_public
   end
@@ -18,5 +19,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+  end
+  def withdraw
+    # 会員ステータスをfalseからturuに変える
+    @customer = current_public
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 end
