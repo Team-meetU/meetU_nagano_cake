@@ -44,7 +44,8 @@ end
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, except:[:destroy]
     resources :orders, only: [:show, :update]
-    resources :order_details, only: [:update]
+
+    resources :order_details, only: [:show, :update]
 
 
   end

@@ -46,6 +46,12 @@ class Public::OrdersController < ApplicationController
     @total = @cart_items.inject(0){|sum,item| sum+item.subtotal}
     @order.total_price = @total+800
 
+    @order.delivery_charge = 800
+    if params[:order][:user_address] == "0"
+    @order.postal_code = current_public.postal_code
+    @order.delivery_address = current_public.address
+
+
     if params[:order][:delivery_address] == "0"
       @order.postal_code = current_public.postal_code
       @order.delivery_address = current_public.address
