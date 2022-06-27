@@ -18,9 +18,12 @@
         <% order.order_details.each do |order_details| %> <%# ここでも@ordersからデータを貰います %>
 
       <tr>
+<<<<<<< HEAD
       <td><%= link_to order.created_at.to_s(:datetime_jp),  admin_order_path(order.id) %> <%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %></td>
+=======
+      <td><%= link_to order.created_at.to_s(:datetime_jp),  admin_order_path(order.id) %></td><%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %>
+>>>>>>> 8df148325645da9ece43051a6afef0b909de0850
 
-      <td>
         <%# Ｎ：１の関係の場合は、Ｎであるorderが決まれば自動的に表示するpublicは１つに決められます。 %>
         <%= order.public.family_name+order.public.first_name %>
       </td>
