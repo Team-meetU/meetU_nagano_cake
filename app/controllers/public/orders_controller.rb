@@ -5,14 +5,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @total = @order.total_price-800
   end
 
   def create
      @order = current_public.orders.new(order_params)
     @order.save
-    p @order
-    current_public.addresses.create(
-        postal_code: params[:order][:postal_code],
+    current_public.addresses.create!(
+        post_code: params[:order][:post_code],
         address: params[:order][:address],
         name: params[:order][:name]
         )
@@ -29,11 +31,13 @@ class Public::OrdersController < ApplicationController
     #５ 最後にカート商品を全て削除する
     @cart_items.destroy_all
     #６　購入完了画面へ遷移
-    redirect_to thanks_orders_path
+    redirect_to public_thanks_path
   end
 
   def index
+
     @orders = current_public.orders.all
+
   end
 
   def confirm
@@ -41,6 +45,7 @@ class Public::OrdersController < ApplicationController
     @order = current_public.orders.new(order_params)
     @total = @cart_items.inject(0){|sum,item| sum+item.subtotal}
     @order.total_price = @total+800
+
     if params[:order][:delivery_address] == "0"
       @order.postal_code = current_public.postal_code
       @order.delivery_address = current_public.address
@@ -54,6 +59,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code =  params[:order][:post_code]
       @order.delivery_address = params[:order][:delivery_address]
       @order.delivery_name =  params[:order][:delivery_name]
+
     end
   end
 
@@ -62,7 +68,7 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:postal_code, :delivery_address, :delivery_name, :method_of_payment, :status, :total_price, :delivery_charge, :user_address)
+    params.require(:order).permit(:postal_code,:delivery_address,:delivery_name,:method_of_payment,:status,:total_price,:delivery_charge)
   end
 end
 
