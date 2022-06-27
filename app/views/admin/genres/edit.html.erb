@@ -4,8 +4,8 @@
 
     <div class="col-xs-9">
       <h2>ジャンル編集</h2><br>
+      <%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
     <table class = "table">
-       <%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
         <div class="field row">
           <tr><td>
           <lavel>ジャンル名</lavel>

@@ -18,7 +18,7 @@
 
       <td>
         <%# A+Bと表記して、二つの表示をくっつけてABと表示できます。%>
-        <%= link_to public.family_name+public.first_name, admin_customer_path(public.id) %>
+        <%= link_to public.first_name+public.family_name, admin_customer_path(public.id) %>
       </td>
 
       <td><%= public.email %></td>

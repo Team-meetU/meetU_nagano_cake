@@ -3,15 +3,15 @@
   <div class="row">
 <table class="table">
     <thead>
-      <tr><b><%= @public.family_name+@public.first_name %>さんの会員詳細</b></tr>
+      <tr><b><%= @public.first_name %> <%= @public.family_name %>さんの会員詳細</b></tr>
     </thead>
 
     <tbody>
       <tr><td>会員ID</td><td><%= @public.id %></td></tr>
 
-      <tr><td>氏名</td><td><%= @public.family_name %>  <%= @public.first_name %></td></tr>
+      <tr><td>氏名</td><td><%= @public.first_name %>  <%= @public.family_name %></td></tr>
 
-      <tr><td>フリガナ</td><td><%= @public.family_name_kana %>  <%= @public.first_name_kana %></td></tr>
+      <tr><td>フリガナ</td><td><%= @public.first_name_kana %>  <%= @public.family_name_kana %></td></tr>
 
       <tr><td>郵便番号</td><td><%= @public.postal_code %></td></tr>
 

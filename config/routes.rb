@@ -7,14 +7,19 @@ devise_for :publics,skip: [:passwords], controllers: {
   scope module: :public do
 
   root to: "homes#top"
-  resources :cart_items, only: [:index, :update, :destroy, :create]do
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
   collection do
       delete :destroy_all
     end
   end
   resources :addresses, except: [:new]
   resources :items, only: [:show, :index]
-  resources :customers, only: [:edit, :update]
+  resources :customers, only: [:edit, :update] do
+    collection do
+      get :unsubscribe
+      patch :withdraw
+    end
+  end
   resources :orders, only: [:new, :create, :show, :index] do
     collection do
       post :confirm
@@ -23,6 +28,10 @@ devise_for :publics,skip: [:passwords], controllers: {
   end
   get "customers/my_page" => "customers#show"
   get "about" => "homes#about"
+  # 退会確認画面
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
 end
 

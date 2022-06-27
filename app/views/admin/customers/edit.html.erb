@@ -5,15 +5,15 @@
 <%= form_with model: @public, url: admin_customer_path(@public.id), method: :patch do |f| %>
 <table class="table">
     <thead>
-      <tr><b><%= @public.family_name+@public.first_name %>さんの会員情報編集</b></tr>
+      <tr><b><%= @public.first_name %> <%= @public.family_name %>さんの会員情報編集 </b></tr>
     </thead>
 
       <tbody>
       <tr><td>会員ID</td><td><%= @public.id %></td></tr>
 
-      <tr><td>氏名</td><td> <%= f.text_field :family_name %>   <%= f.text_field :first_name %></td></tr>
+      <tr><td>氏名</td><td> <%= f.text_field :first_name %>   <%= f.text_field :family_name %></td></tr>
 
-      <tr><td>フリガナ</td><td><%= f.text_field :family_name_kana %>   <%= f.text_field :first_name_kana %></td></tr>
+      <tr><td>フリガナ</td><td><%= f.text_field :first_name_kana %>   <%= f.text_field :family_name_kana %></td></tr>
 
       <tr><td>郵便番号</td><td><%= f.text_field :postal_code %></td></tr>
 

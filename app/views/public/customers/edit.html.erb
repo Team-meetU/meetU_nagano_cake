@@ -57,6 +57,8 @@
     </tr>
   </table>
 
-  <%= customer.submit '編集内容を保存' %>
+  <%= customer.submit '編集内容を保存',class: "btn btn-success" %>
+
+  <%= link_to "退会する", withdraw_customers_path, method: :patch,class: "btn btn-danger" %>
 
 <% end %>
