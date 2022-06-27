@@ -12,7 +12,7 @@ devise_for :publics,skip: [:passwords], controllers: {
       delete :destroy_all
     end
   end
-  resources :addresses, except: [:new]
+  resources :addresses, except: [:new, :show]
   resources :items, only: [:show, :index]
 
   resources :customers, only: [:edit, :update]do
