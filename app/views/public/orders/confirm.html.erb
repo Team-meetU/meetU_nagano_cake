@@ -21,12 +21,11 @@
   </table>
 
   <table>
-    <tr><th>送料</th><td><%= @order.delivery_charge %> </td></tr>
+    <tr><th>送料</th><td>800<%#= @order.delivery_charge %> </td></tr>
     <tr><th>商品合計</th><td><%= @total.to_s(:delimited) %></td></tr>
     <tr><th>請求金額</th><td><%= @order.total_price.to_s(:delimited) %></td></tr>
 
-  </table>#
-  <%= form_with model: @order,url: orders_path,method: :post do |f| %>
+  </table>
   <p>支払い方法</p>
   <%= @order.method_of_payment %>
   <p>お届け先</p>
@@ -41,7 +40,6 @@
     <%= f.hidden_field :delivery_charge %>
     <%= f.hidden_field :user_address %>
     <%= f.hidden_field :delivery_name %>
-    <%= f.submit "注文を確定する" %>
+    <%= f.submit "注文を確定する", class:'btn btn-success' %>
 
     <% end %>
-  <% end %>
