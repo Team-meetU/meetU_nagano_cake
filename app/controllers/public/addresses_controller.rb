@@ -7,7 +7,9 @@ class Public::AddressesController < ApplicationController
 
   def create
     address = Address.new(address_params)
-    address.public_id = current_public.id
+
+    address.public_id = current_public
+
     address.save
     redirect_to addresses_path
   end
@@ -15,6 +17,7 @@ class Public::AddressesController < ApplicationController
   def edit
     @address = current_public.addresses.find(params[:id])
   end
+
   def update
     @address = current_public.addresses.find(params[:id])
     @address.update(address_params)
@@ -25,6 +28,7 @@ class Public::AddressesController < ApplicationController
    address.detroy!
    redirect_to addresses_path
   end
+
 
 
   private

@@ -35,8 +35,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
-    
+
+    @orders = current_public.orders.all
+
   end
 
   def confirm
@@ -44,18 +45,24 @@ class Public::OrdersController < ApplicationController
     @order = current_public.orders.new(order_params)
     @total = @cart_items.inject(0){|sum,item| sum+item.subtotal}
     @order.total_price = @total+800
-    if params[:order][:user_address] == "0"
-    @order.postal_code = current_public.postal_code
-    @order.delivery_address = current_public.address
-    @order.delivery_name = current_public.family_name+current_public.first_name
-    elsif params[:order][:user_address] == "1"
-    @address = current_public.addresses.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.delivery_address = @address.address
-    @order.delivery_name = @address.name
-    end
 
+    if params[:order][:delivery_address] == "0"
+      @order.postal_code = current_public.postal_code
+      @order.delivery_address = current_public.address
+      @order.delivery_name = current_public.family_name+current_public.first_name
+    elsif params[:order][:delivery_address] == "1"
+      @address = current_public.addresses.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.delivery_address = @address.address
+      @order.delivery_name = @address.name
+    elsif params[:delivery_address] == "2"
+      @order.post_code =  params[:order][:post_code]
+      @order.delivery_address = params[:order][:delivery_address]
+      @order.delivery_name =  params[:order][:delivery_name]
+
+    end
   end
+
 
   def thanks
   end
