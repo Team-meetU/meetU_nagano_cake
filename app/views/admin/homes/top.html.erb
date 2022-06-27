@@ -12,13 +12,12 @@
 
 
       <% @orders.each do |order| %> <%# ここでordersとそれに関連するモデルの情報を取得して一覧を表示 %>
-
         <%# １：Ｎの関係になっているモデル情報を表示するなら、この場合だとorder_detailsに紐づけられた、
         ただ一つのorder_idの情報も探しておかないと、どのordere_detailsの情報を表示するか決めることができません %>
         <% order.order_details.each do |order_details| %> <%# ここでも@ordersからデータを貰います %>
 
       <tr>
-      <td><%= order.created_at.to_s(:datetime_jp) %>  <%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %></td>
+      <td><%= link_to order.created_at.to_s(:datetime_jp),  admin_order_path(order.id) %>  <%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %></td>
 
       <td>
         <%# Ｎ：１の関係の場合は、Ｎであるorderが決まれば自動的に表示するpublicは１つに決められます。 %>

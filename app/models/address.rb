@@ -4,9 +4,10 @@ class Address < ApplicationRecord
   validates :name, presence: true, length: {maximum:50}
 
   belongs_to :public, optional: true
-  
-  def address_display
+
+
+def address_display
     '〒' + postal_code + ' ' + address + ' ' + name
-　end
 end
+
 end
