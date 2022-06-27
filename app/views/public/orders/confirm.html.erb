@@ -29,18 +29,19 @@
   <%= form_with model: @order,url: orders_path,method: :post do |f| %>
   <p>支払い方法</p>
   <%= @order.method_of_payment %>
-  <%#= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
-  <%#= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
   <p>お届け先</p>
   <%= "〒" + @order.postal_code + " " + @order.delivery_address + " " + @order.delivery_name %> 様
 
+  <%= form_with model: @order,url: orders_path, method: :post do |f| %>
+    <%= f.hidden_field :postal_code %>
+    <%= f.hidden_field :delivery_address %>
+    <%= f.hidden_field :method_of_payment %>
+    <%= f.hidden_field :status %>
+    <%= f.hidden_field :total_price %>
+    <%= f.hidden_field :delivery_charge %>
+    <%= f.hidden_field :user_address %>
+    <%= f.hidden_field :delivery_name %>
+    <%= f.submit "注文を確定する" %>
 
-
-  <%= f.hidden_field :method_of_payment %>
-  <%= f.hidden_field :postal_code %>
-  <%= f.hidden_field :delivery_address %>
-  <%= f.hidden_field :delivery_name %>
-  <%#= f.hidden_field :total_price, value: billing_amount(@order) %>
-
-  <%= f.submit "注文を確定する", class:"btn btn-success" %>
+    <% end %>
   <% end %>
