@@ -15,7 +15,7 @@
 
         <%# １：Ｎの関係になっているモデル情報を表示するなら、この場合だとorder_detailsに紐づけられた、
         ただ一つのorder_idの情報も探しておかないと、どのordere_detailsの情報を表示するか決めることができません %>
-        <% order.order_details.each do |order_details| %> <%# ここでも@ordersからデータを貰います %>
+        <%# order.order_details.each do |order_details| %> <%# ここでも@ordersからデータを貰います %>
 
       <tr>
       <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order.id) %>  <%# 注文idごとの登録日時をtime_formats.rbで指定した方式で表示 %></td>
@@ -25,7 +25,17 @@
         <%= order.public.first_name+order.public.family_name %>
       </td>
 
-      <td><%= order_details.quantity %></td><%# 全てのorder_detailsのorder.idのカラム情報が必ず必要です %>
+      <td><% amount = 0 %>
+
+<% order.order_details.each do |order_details| %>
+
+<% order_details.quantity %>
+
+<% amount += order_details.quantity.to_i %>
+
+<% end %>
+
+<%= amount %><%#= order_details.quantity %></td><%# 全てのorder_detailsのorder.idのカラム情報が必ず必要です %>
 
       <td>
       <% if order.status == 0 %> <%# 注文idごとの受注ステータスを表示 %>
@@ -46,7 +56,6 @@
 
       </tr>
         <% end %>
-      <% end %>
     </tbody>
   </table>
   </div>
