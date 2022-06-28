@@ -1,0 +1,52 @@
+<%= render 'admin/homes/error_form', js: @genre %>
+<%#div class="container takasa"%>
+  <div class="row ">
+
+<div class="col-md-8">
+   <table class = "table">
+      <thead>
+    <h2>ジャンル一覧・追加</h2><br>
+  </thead>
+  <tbody>
+    <%= form_for @genre, url: admin_genres_path do |f| %>
+    <div class="field row">
+      <tr><td>
+      <lavel>ジャンル</lavel>
+      </td><td>
+      <%= f.text_field :name %>
+      </td>
+    </div>
+      <td>
+      <%= f.submit "新規登録", class: "btn btn-primary" %>
+      </td></tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+    <% end %>
+    <br>
+<div class="row ">
+<div class="col-md-6">
+
+    <table class = "table table-hover">
+      <thead>
+        <tr class="active">
+          <th>ジャンル</th>
+          <th></th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%#= genre.valid_invalid_status %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre.id) ,class: "btn btn-primary" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%#= paginate @genres %>
+    </div>
+  </div>
+

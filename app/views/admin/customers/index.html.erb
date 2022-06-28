@@ -1,0 +1,36 @@
+<div class="col-md-8 offset-md-1">
+  <b>会員一覧</b>
+  <p id="notice"></p>
+  <table class="table thead-class">
+    <thead>
+      <tr class="table-secondary">
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+        <th colspan="5"></th><br>
+      </tr>
+    </thead>
+      <% @publics.each do |public| %><%# @publics = Public.allですべてのPublicユーザーの情報を取得して、順番に並べて表示 %>
+    <tbody>
+      <tr>
+      <td><%= public.id %></td>
+
+      <td>
+        <%# A+Bと表記して、二つの表示をくっつけてABと表示できます。%>
+        <%= link_to public.first_name+public.family_name, admin_customer_path(public.id) %>
+      </td>
+
+      <td><%= public.email %></td>
+
+      <td>
+        <% if public.is_deleted %><%# is_deletedの情報を取得して退会済みかチェック %>
+          <b class="text-secondary">退会</b>  <%# true(退会済み)の時の表示 %>
+        <% else %>
+          <b class="text-success">有効</b>  <%# false(初期値)の時の表示 %>
+        <% end %>
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
