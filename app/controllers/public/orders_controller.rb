@@ -26,11 +26,11 @@ def create
 
 current_public.addresses.create!(
 
-post_code: params[:order][:post_code],
+postal_code: params[:order][:postal_code],
 
-address: params[:order][:address],
+address: params[:order][:delivery_address],
 
-name: params[:order][:name]
+name: params[:order][:delivery_name]
 
 )
 
@@ -60,9 +60,9 @@ end
 
 #６　購入完了画面へ遷移
 
-redirect_to public_thanks_path
+redirect_to thanks_orders_path
 
-end
+enhttps://validator.w3.org/#validate_by_inputd
 
 def index
 

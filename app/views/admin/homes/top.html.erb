@@ -22,7 +22,7 @@
 
       <td>
         <%# Ｎ：１の関係の場合は、Ｎであるorderが決まれば自動的に表示するpublicは１つに決められます。 %>
-        <%= order.public.family_name+order.public.first_name %>
+        <%= order.public.first_name+order.public.family_name %>
       </td>
 
       <td><%= order_details.quantity %></td><%# 全てのorder_detailsのorder.idのカラム情報が必ず必要です %>
@@ -39,7 +39,7 @@
       <% elsif order.status == 4 %>
       発送済み
       <% else %>
-      Errer!  <%# なんらかのトラブルで、想定していない値になったことが分かるように、設定しています。 %>
+      その他  <%# なんらかのトラブルで、想定していない値になったことが分かるように、設定しています。 %>
       <% end %>
       </td>
       <td><%#= order.status %>　<%# 注文idごとの受注ステータスを表示 %></td>
